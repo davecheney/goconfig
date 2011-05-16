@@ -21,7 +21,7 @@ import (
 // The desired file permissions must be passed as in os.Open. The header is a
 // string that is saved as a comment in the first line of the file.
 func (self *Config) WriteFile(fname string, perm uint32, header string) os.Error {
-	file, err := os.Open(fname, os.O_WRONLY|os.O_CREAT|os.O_TRUNC, perm)
+	file, err := os.Create(fname)
 	if err != nil {
 		return err
 	}
@@ -84,4 +84,3 @@ func (self *Config) write(buf *bufio.Writer, header string) (err os.Error) {
 
 	return nil
 }
-
